@@ -4,4 +4,5 @@ class TripController < ApplicationController
 
   def create
   end
+
 end
