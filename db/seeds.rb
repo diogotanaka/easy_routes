@@ -9,13 +9,17 @@
 #   end
 
 puts "Cleaning database..."
-# User.destroy_all
+User.destroy_all
 
 # 2. Create the instances 🏗️
 puts "Creating users..."
-User.create!(email: "diogo@diogo.com", password: "teste1", first_name: "Diogo", last_name: "Tanaka", preferred_method: "Subway", accessibility: false)
-puts "Created Dishoom",
-puts "Created Pizza East"
+User.find_or_create_by!(email: "diogo@diogo.com") do |user|
+  user.password = "teste1"
+  user.first_name = "Diogo"
+  user.last_name = "Tanaka"
+  user.preferred_method = "Subway"
+  user.accessibility = false
+end
 
 # 3. Display a message 🎉
-puts "Finished! Created #{User.count} user."
+puts "Finished! Created #{User.count} users."

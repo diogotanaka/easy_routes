@@ -1,8 +1,8 @@
 class Message < ApplicationRecord
   self.table_name = "messages"
 
-  belongs_to :chat, foreign_key: "id_chats"
+  belongs_to :trip
+  belongs_to :user
 
-  validates :request, presence: true
+  validates :content, presence: true
 end
-

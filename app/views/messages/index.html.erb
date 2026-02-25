@@ -1,0 +1,10 @@
+<h1>Chat da viagem</h1>
+
+<div>
+  <% @messages.each do |msg| %>
+    <p>
+      <strong><%= msg.user.first_name %>:</strong>
+      <%= msg.content %>
+    </p>
+  <% end %>
+</div>
