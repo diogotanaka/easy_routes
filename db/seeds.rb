@@ -11,11 +11,21 @@
 puts "Cleaning database..."
 # User.destroy_all
 
-# 2. Create the instances 🏗️
-puts "Creating users..."
-User.create!(email: "diogo@diogo.com", password: "teste1", first_name: "Diogo", last_name: "Tanaka", preferred_method: "Subway", accessibility: false)
-puts "Created Dishoom",
-puts "Created Pizza East"
+# Criar usuário
+user = User.create!(
+  name: "João Silva",
+  email: "joao@example.com"
+)
 
-# 3. Display a message 🎉
-puts "Finished! Created #{User.count} user."
+# Criar trip
+trip = user.trips.create!(
+  origin: "São Paulo",
+  destination: "Paris",
+  start_date: Date.today + 30.days
+)
+
+# Criar mensagens
+trip.messages.create!(role: "user", content: "Quais os melhores restaurantes?")
+trip.messages.create!(role: "assistant", content: "Recomendo: Le Jules Verne e L'Ambroisie")
+
+puts "✅ Dados criados com sucesso!"
