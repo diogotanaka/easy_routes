@@ -1,0 +1,27 @@
+<h1>Nova Viagem</h1>
+
+<%= form_with model: @trip do |f| %>
+  <div>
+    <%= f.label :user_id, "Usuário" %>
+    <%= f.collection_select :user_id, User.all, :id, :name %>
+  </div>
+
+  <div>
+    <%= f.label :origin, "Origem" %>
+    <%= f.text_field :origin %>
+  </div>
+
+  <div>
+    <%= f.label :destination, "Destino" %>
+    <%= f.text_field :destination %>
+  </div>
+
+  <div>
+    <%= f.label :start_date, "Data" %>
+    <%= f.date_field :start_date %>
+  </div>
+
+  <%= f.submit "Criar Viagem" %>
+<% end %>
+
+<%= link_to "Voltar", trips_path %>

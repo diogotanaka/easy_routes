@@ -1,6 +1,18 @@
 # frozen_string_literal: true
 
 class DeviseCreateUsers < ActiveRecord::Migration[7.1]
+<<<<<<< HEAD:db/migrate/20260221205352_devise_create_users.rb
+ def change
+    create_table :users do |t|
+      t.string :name
+      t.string :email
+      t.timestamps
+    end
+
+    add_index :users, :email, unique: true
+  end
+end
+=======
   def change
   create_table :messages do |t|
   t.text :content
@@ -28,3 +40,4 @@ end
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
+>>>>>>> 0b2d81ffcac17fde834c16aaf9a0ea46136bd888:db/migrate/20260221205352_device_create_users.rb
