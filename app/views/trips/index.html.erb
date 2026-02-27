@@ -1,0 +1,12 @@
+<h1>Minhas Viagens</h1>
+
+<%= link_to "Nova Viagem", new_trip_path %>
+
+<ul>
+  <% @trips.each do |trip| %>
+    <li>
+      <%= link_to "#{trip.origin} → #{trip.destination}", trip %>
+      (<%= trip.start_date %>)
+    </li>
+  <% end %>
+</ul>
