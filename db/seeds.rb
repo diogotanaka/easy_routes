@@ -13,8 +13,10 @@ User.destroy_all
 
 # Criar usuário
 user = User.create!(
-  name: "João Silva",
-  email: "joao@example.com"
+  first_name: "João",
+  last_name: "Silva",
+  email: "joao@example.com",
+  password: "123456"
 )
 
 # Criar trip
