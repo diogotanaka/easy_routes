@@ -1,9 +1,14 @@
 class TripsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :home
+
+  def home
+  end
   def index
-    @trips = Trip.all
+    @trips = current_user.trips.order(created_at: :desc)
   end
 
   def show
+    @message = Message.new
     @trip = Trip.find(params[:id])
   end
 

@@ -1,0 +1,240 @@
+<div class="home-container">
+  <%= render "shared/banner" %>
+
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1 class="hero-title">Olá</h1>
+      <p class="hero-subtitle">Auxilio você a chegar ao seu destino e aproveitar o melhor da região. Faça o seu cadastro e explore o mundo!</p>
+
+      <div class="cta-buttons">
+        <%= link_to "Começar Agora", new_user_registration_path, class: "btn btn-primary-large" %>
+        <%= link_to "Saber Mais", "#features", class: "btn btn-secondary-large" %>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <svg class="travel-illustration" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="250" cy="200" r="180" fill="#667eea" opacity="0.1"/>
+        <path d="M150 200 L200 150 L250 200 L300 150 L350 200" stroke="#667eea" stroke-width="3" fill="none"/>
+        <circle cx="250" cy="120" r="30" fill="#764ba2"/>
+        <text x="250" y="130" text-anchor="middle" fill="white" font-size="24">✈️</text>
+      </svg>
+    </div>
+  </div>
+
+  <div id="features" class="features-section">
+    <h2 class="section-title">Por Que Usar o Easy Routes?</h2>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>Assistente IA</h3>
+        <p>Chat inteligente que aprende suas preferências e sugere os melhores lugares</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🗺️</div>
+        <h3>Planejamento Completo</h3>
+        <p>Restaurantes, pontos turísticos, transportes e muito mais em um só lugar</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>Chat Contínuo</h3>
+        <p>Todas as conversas ficam salvas. Volte quando quiser e continue planejando</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>Explore o Mundo</h3>
+        <p>Descubra destinos incríveis com recomendações personalizadas</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .home-container {
+    min-height: 100vh;
+  }
+
+  .hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    gap: 60px;
+  }
+
+  .hero-content {
+    flex: 1;
+    max-width: 600px;
+  }
+
+  .hero-title {
+    font-size: 64px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 20px;
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary-large {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 16px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  }
+
+  .btn-primary-large:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+  }
+
+  .btn-secondary-large {
+    background: white;
+    color: #667eea;
+    padding: 16px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid #667eea;
+    transition: all 0.2s ease;
+  }
+
+  .btn-secondary-large:hover {
+    background: #f7fafc;
+    transform: translateY(-2px);
+  }
+
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .travel-illustration {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+
+  .features-section {
+    background: linear-gradient(135deg, #667eea 0%, #8e7ba1 100%);
+    padding: 80px 20px;
+    color: white;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 60px;
+  }
+
+  .features-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+
+  .feature-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .feature-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+
+  .feature-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .feature-card p {
+    font-size: 16px;
+    opacity: 0.9;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      flex-direction: column;
+      padding: 40px 20px;
+      gap: 40px;
+    }
+
+    .hero-title {
+      font-size: 42px;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+    }
+
+    .hero-image {
+      order: -1;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .btn-primary-large,
+    .btn-secondary-large {
+      width: 100%;
+      text-align: center;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .section-title {
+      font-size: 32px;
+    }
+  }
+</style>
