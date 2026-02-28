@@ -1,12 +1,78 @@
-<h1>Minhas Viagens</h1>
+<div class="trips-page">
+  <h1>Minhas Viagens</h1>
 
-<%= link_to "Nova Viagem", new_trip_path %>
+  <%= link_to "Nova Viagem", new_trip_path, class: "btn-nova-viagem" %>
 
-<ul>
-  <% @trips.each do |trip| %>
-    <li>
-      <%= link_to "#{trip.origin} → #{trip.destination}", trip %>
-      (<%= trip.start_date %>)
-    </li>
-  <% end %>
-</ul>
+  <ul>
+    <% @trips.each do |trip| %>
+      <li>
+        <%= link_to "#{trip.origin} → #{trip.destination}", trip %>
+        (<%= trip.start_date %>)
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<style>
+  .trips-page {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+
+  .trips-page h1 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #667eea;
+    margin-bottom: 30px;
+  }
+
+  .btn-nova-viagem {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-nova-viagem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+  }
+
+  .trips-page ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .trips-page li {
+    background: white;
+    border-left: 4px solid #667eea;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    transition: all 0.3s ease;
+  }
+
+  .trips-page li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+  }
+
+  .trips-page li a {
+    color: #2d3748;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .trips-page li a:hover {
+    color: #667eea;
+  }
+</style>

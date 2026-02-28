@@ -1,27 +1,125 @@
-<h1>Nova Viagem</h1>
+<div class="new-trip-page">
+  <h1>Nova Viagem</h1>
 
-<%= form_with model: @trip do |f| %>
-  <div>
-    <%= f.label :user_id, "Usuário" %>
-    <%= f.collection_select :user_id, User.all, :id, :first_name %>
-  </div>
+  <%= form_with model: @trip, class: "trip-form" do |f| %>
+    <div class="form-field">
+      <%= f.label :user_id, "Usuário" %>
+      <%= f.collection_select :user_id, User.all, :id, :first_name %>
+    </div>
 
-  <div>
-    <%= f.label :origin, "Origem" %>
-    <%= f.text_field :origin %>
-  </div>
+    <div class="form-field">
+      <%= f.label :origin, "Origem" %>
+      <%= f.text_field :origin %>
+    </div>
 
-  <div>
-    <%= f.label :destination, "Destino" %>
-    <%= f.text_field :destination %>
-  </div>
+    <div class="form-field">
+      <%= f.label :destination, "Destino" %>
+      <%= f.text_field :destination %>
+    </div>
 
-  <div>
-    <%= f.label :start_date, "Data" %>
-    <%= f.date_field :start_date %>
-  </div>
+    <div class="form-field">
+      <%= f.label :start_date, "Data" %>
+      <%= f.date_field :start_date %>
+    </div>
 
-  <%= f.submit "Criar Viagem" %>
-<% end %>
+    <%= f.submit "Criar Viagem", class: "btn-submit" %>
+  <% end %>
 
-<%= link_to "Voltar", trips_path %>
+  <%= link_to "Voltar", trips_path, class: "btn-back" %>
+</div>
+
+<style>
+  .new-trip-page {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .new-trip-page h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #667eea;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .trip-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-field label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d3748;
+  }
+
+  .form-field input[type="text"],
+  .form-field input[type="date"],
+  .form-field select {
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .form-field input:focus,
+  .form-field select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  }
+
+  .btn-submit {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 14px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+  }
+
+  .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+  }
+
+  .btn-back {
+    display: inline-block;
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+
+  .btn-back:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .new-trip-page {
+      margin: 20px;
+      padding: 24px;
+    }
+
+    .new-trip-page h1 {
+      font-size: 28px;
+    }
+  }
+</style>
