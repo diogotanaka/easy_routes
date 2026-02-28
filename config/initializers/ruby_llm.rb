@@ -1,3 +1,3 @@
 RubyLLM.configure do |config|
-  config.openai_api_key = ENV["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"]
+  config.openai_api_key = ENV["OPENAI_API_KEY"]
 end

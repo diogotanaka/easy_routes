@@ -3,8 +3,13 @@
 <div>
   <% @messages.each do |msg| %>
     <p>
-      <strong><%= msg.user.first_name %>:</strong>
+      <strong><%= msg.role %>:</strong>
       <%= msg.content %>
     </p>
   <% end %>
 </div>
+
+<%= simple_form_for [@trip, @message] do |f| %>
+  <%= f.input :content, label: false, placeholder: "Digite uma mensagem..." %>
+  <%= f.submit "Enviar" %>
+<% end %>

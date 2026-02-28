@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   def index
-    @trips = Trip.all
+    @trips = current_user.trips.order(created_at: :desc)
   end
 
   def show
