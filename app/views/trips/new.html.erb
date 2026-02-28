@@ -3,7 +3,7 @@
 <%= form_with model: @trip do |f| %>
   <div>
     <%= f.label :user_id, "Usuário" %>
-    <%= f.collection_select :user_id, User.all, :id, :name %>
+    <%= f.collection_select :user_id, User.all, :id, :first_name %>
   </div>
 
   <div>
