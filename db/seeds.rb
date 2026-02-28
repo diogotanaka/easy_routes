@@ -21,8 +21,8 @@ user = User.create!(
 
 # Criar trip
 trip = user.trips.create!(
-  initial_location: "São Paulo",
-  destination_name: "Paris",
+  origin: "São Paulo",
+  destination: "Paris",
   start_date: Date.today + 30.days
 )
 
