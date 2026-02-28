@@ -1,7 +1,79 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dawo91kox/image/upload/v1772147696/74268c288014810f680c58cd3dce0648c08c865c-738x527_hqkwnf.jpg);">
   <div class="container">
-    <h1><strong>Easy Routes</strong> é o seu guia local a qualquer momento!</h1>
+    <h1><span class="brand-highlight">Easy Routes</span> é o seu guia local a qualquer momento!</h1>
     <p>Escolha o seu destino e aproveite.</p>
-    <a class="btn btn-flat" href="<%= new_user_registration_path %>">Sign up now</a>
+    <a class="btn btn-banner-signup" href="<%= new_user_registration_path %>">Sign up now</a>
   </div>
 </div>
+
+<style>
+  .banner {
+    background-size: cover;
+    background-position: center;
+    padding: 150px 0;
+    text-align: center;
+    color: white;
+  }
+
+  .banner h1 {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+  }
+
+  .brand-highlight {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 900;
+  }
+
+  .banner p {
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+  }
+
+  .btn-banner-signup {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+    padding: 18px 50px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+    transition: all 0.3s ease;
+    border: 3px solid white;
+  }
+
+  .btn-banner-signup:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.7);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  }
+
+  @media (max-width: 768px) {
+    .banner {
+      padding: 80px 20px;
+    }
+
+    .banner h1 {
+      font-size: 32px;
+    }
+
+    .banner p {
+      font-size: 18px;
+    }
+
+    .btn-banner-signup {
+      padding: 14px 35px;
+      font-size: 16px;
+    }
+  }
+</style>
