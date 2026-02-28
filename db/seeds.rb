@@ -25,7 +25,6 @@ trip = user.trips.create!(
   destination: "Paris",
   start_date: Date.today + 30.days
 )
-
 # Criar mensagens
 trip.messages.create!(role: "user", content: "Quais os melhores restaurantes?")
 trip.messages.create!(role: "assistant", content: "Recomendo: Le Jules Verne e L'Ambroisie")
