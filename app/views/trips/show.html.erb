@@ -11,9 +11,14 @@
   <% end %>
 </div>
 
-<%= form_with url: trip_messages_path(@trip), method: :post do |f| %>
+<!--<%= form_with url: trip_messages_path(@trip), method: :post do |f| %>
   <%= f.text_area :content, placeholder: "Digite sua pergunta..." %>
   <%= f.submit "Enviar" %>
+<% end %> -->
+
+<%= simple_form_for [@trip, @message] do |f| %>
+    <%= f.input :content, label: "Ask a question", required: true, placeholder: "whats your question?" %>
+    <%= f.button :submit, 'Ask LLM', class: 'btn btn-primary' %>
 <% end %>
 
 <%= link_to "Voltar", trips_path %>

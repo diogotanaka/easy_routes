@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :trips do
-    resources :messages, only: [:index, :create]
+    resources :messages, only: [:create]
   end
 
   root "trips#home"
