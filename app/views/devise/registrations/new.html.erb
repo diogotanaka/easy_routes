@@ -1,25 +1,169 @@
-<h2>Sign up</h2>
+<div class="signup-container">
+  <div class="signup-card">
+    <h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+      <div class="form-inputs">
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" }%>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up" %>
+      </div>
+    <% end %>
+
+    <div class="shared-links">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+<style>
+  .signup-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+  }
 
-<%= render "devise/shared/links" %>
+  .signup-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 480px;
+    width: 100%;
+    padding: 40px;
+  }
+
+  .signup-card h2 {
+    margin: 0 0 30px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a202c;
+    text-align: center;
+  }
+
+  .signup-card .form-inputs {
+    margin-bottom: 30px;
+  }
+
+  .signup-card input[type="email"],
+  .signup-card input[type="password"] {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .signup-card input[type="email"]:focus,
+  .signup-card input[type="password"]:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    outline: none;
+  }
+
+  .signup-card label {
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 8px;
+    display: block;
+    font-size: 14px;
+  }
+
+  .signup-card .hint {
+    font-size: 13px;
+    color: #718096;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  .signup-card .form-group {
+    margin-bottom: 24px;
+  }
+
+  .signup-card .form-actions input[type="submit"] {
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .signup-card .form-actions input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+  }
+
+  .signup-card .form-actions input[type="submit"]:active {
+    transform: translateY(0);
+  }
+
+  .shared-links {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+  }
+
+  .shared-links a {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    display: inline-block;
+    margin: 0 8px;
+  }
+
+  .shared-links a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+  }
+
+  .error_notification {
+    background: #fed7d7;
+    border-left: 4px solid #f56565;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    color: #742a2a;
+    font-size: 14px;
+  }
+
+  @media (max-width: 576px) {
+    .signup-container {
+      padding: 10px;
+    }
+
+    .signup-card {
+      padding: 24px;
+      border-radius: 8px;
+    }
+
+    .signup-card h2 {
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+  }
+</style>
