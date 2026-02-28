@@ -4,6 +4,7 @@ class TripsController < ApplicationController
   end
 
   def show
+    @message = Message.new
     @trip = Trip.find(params[:id])
   end
 
