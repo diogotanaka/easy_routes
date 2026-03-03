@@ -1,10 +1,11 @@
 <div class="new-trip-page">
   <h1>Nova Viagem</h1>
 
-  <%= form_with model: @trip, class: "trip-form" do |f| %>
+<%= form_with model: @trip, class: "trip-form" do |f| %>
     <div class="form-field">
       <%= f.label :user_id, "Usuário" %>
-      <%= f.collection_select :user_id, User.all, :id, :first_name %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= current_user.first_name %>
     </div>
 
     <div class="form-field">
