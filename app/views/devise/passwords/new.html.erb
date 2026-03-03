@@ -1,8 +1,8 @@
 <div class="forgot-password-container">
   <div class="forgot-password-card">
     <div class="card-header">
-      <h2 class="card-title">Forgot Your Password?</h2>
-      <p class="card-subtitle">No worries! Enter your email and we'll send you reset instructions</p>
+      <h2 class="card-title">Esqueceu sua senha?</h2>
+      <p class="card-subtitle">Sem problemas! Entre com seu email e nós lhe enviaremos instruções para redefinir sua senha</p>
     </div>
 
     <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "forgot-password-form" }) do |f| %>
