@@ -13,7 +13,7 @@
 
       <div class="form-inputs">
         <%= f.input :password,
-                    label: "New Password",
+                    label: "Nova senha",
                     required: true,
                     autofocus: true,
                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -21,7 +21,7 @@
                     wrapper_html: { class: "form-group-spacing" } %>
 
         <%= f.input :password_confirmation,
-                    label: "Confirm New Password",
+                    label: "Confirmar nova senha",
                     required: true,
                     input_html: { autocomplete: "new-password", class: "form-control-lg" },
                     wrapper_html: { class: "form-group-spacing" } %>
