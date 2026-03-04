@@ -1,5 +1,4 @@
-Aqui está o código completo com o globo terrestre:
-erb<div class="home-container">
+<<div class="home-container">
   <%= render "shared/banner" %>
 
   <div class="hero-section">
@@ -75,11 +74,25 @@ erb<div class="home-container">
           <path d="M 450 320 Q 465 310 475 320 L 478 340 Q 473 355 465 350 Q 457 345 450 320 Z"/>
         </g>
 
-        <!-- Rotas de viagem (linhas curvas pontilhadas) -->
+        <!-- Rotas de viagem (linhas curvas pontilhadas conectando os pins) -->
         <g stroke-dasharray="8,6" stroke-width="2.5" stroke="url(#pathGradient)" fill="none" opacity="0.6">
-          <path d="M 180 290 Q 250 230 380 220"/>
-          <path d="M 200 260 Q 280 200 420 250"/>
-          <path d="M 190 240 Q 300 180 460 330"/>
+          <!-- Rota: Brasil → Europa -->
+          <path d="M 200 290 Q 250 240 330 190"/>
+
+          <!-- Rota: Europa → Japão -->
+          <path d="M 330 190 Q 370 210 420 230"/>
+
+          <!-- Rota: Brasil → Japão (rota direta) -->
+          <path d="M 200 290 Q 310 260 420 230"/>
+
+          <!-- Rota: Brasil → Globo -->
+          <path d="M 200 290 Q 230 360 270 420"/>
+
+          <!-- Rota: Europa → Globo -->
+          <path d="M 330 190 Q 320 310 300 400"/>
+
+          <!-- Rota: Japão → Globo -->
+          <path d="M 420 230 Q 380 330 330 420"/>
         </g>
 
         <!-- Pontos de localização (pins) -->
