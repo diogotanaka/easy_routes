@@ -14,7 +14,7 @@
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to root_path, class: "nav-link nav-link-custom" do %>
-              <span class="nav-icon"></span>
+              <span class="nav-icon">🏠</span>
               <span>Início</span>
             <% end %>
           </li>
@@ -26,10 +26,17 @@
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="avatar-link" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-img", alt: "User menu" %>
+              <div class="avatar-initials" style="background: <%= user_avatar_color(current_user) %>">
+                <%= current_user.first_name[0].upcase %>
+              </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end custom-dropdown" aria-labelledby="navbarDropdown">
               <div class="dropdown-header">
+                <div class="dropdown-avatar">
+                  <div class="avatar-initials-large" style="background: <%= user_avatar_color(current_user) %>">
+                    <%= current_user.first_name[0].upcase %>
+                  </div>
+                </div>
                 <strong><%= current_user.first_name %></strong>
                 <small class="text-muted d-block"><%= current_user.email %></small>
               </div>
@@ -38,7 +45,7 @@
               <%= link_to "Another action", "#", class: "dropdown-item custom-dropdown-item" %>
               <div class="dropdown-divider"></div>
               <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item custom-dropdown-item logout" do %>
-                <span>🚪</span> Log out
+                <span>🚪</span> Sair
               <% end %>
             </div>
           </li>
@@ -127,11 +134,38 @@
     transform: scale(1.05);
   }
 
-  .avatar-img {
+  .avatar-initials {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .dropdown-avatar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .avatar-initials-large {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 24px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
   .custom-dropdown {
@@ -145,11 +179,14 @@
 
   .dropdown-header {
     padding: 12px 20px;
+    text-align: center;
   }
 
   .dropdown-header strong {
     color: #2d3748;
     font-size: 16px;
+    display: block;
+    margin-top: 8px;
   }
 
   .dropdown-header small {
