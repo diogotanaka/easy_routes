@@ -14,13 +14,13 @@
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to root_path, class: "nav-link nav-link-custom" do %>
-              <span class="nav-icon"></span>
+              <span class="nav-icon">🏠</span>
               <span>Início</span>
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to trips_path, class: "nav-link nav-link-custom" do %>
-              <span class="nav-icon"></span>
+              <span class="nav-icon">✈️</span>
               <span>Minhas Viagens</span>
             <% end %>
           </li>
@@ -41,8 +41,9 @@
                 <small class="text-muted d-block"><%= current_user.email %></small>
               </div>
               <div class="dropdown-divider"></div>
-              <%= link_to "Action", "#", class: "dropdown-item custom-dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item custom-dropdown-item" %>
+              <%= link_to edit_user_registration_path, class: "dropdown-item custom-dropdown-item" do %>
+                <span>⚙️</span> Editar Cadastro
+              <% end %>
               <div class="dropdown-divider"></div>
               <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item custom-dropdown-item logout" do %>
                 <span>🚪</span> Sair
@@ -199,12 +200,19 @@
     color: #4a5568;
     font-weight: 500;
     transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
   .custom-dropdown-item:hover {
     background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
     color: #667eea;
     padding-left: 24px;
+  }
+
+  .custom-dropdown-item span {
+    font-size: 16px;
   }
 
   .custom-dropdown-item.logout {
