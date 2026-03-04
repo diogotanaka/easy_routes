@@ -52,16 +52,13 @@
           </filter>
         </defs>
 
-        <!-- Background -->
-        <rect width="600" height="600" fill="url(#skyGradient)"/>
-
-        <!-- Círculos que deixei de fundo -->
+        <!-- Círculos decorativos de fundo -->
         <circle cx="100" cy="100" r="40" fill="#667eea" opacity="0.05"/>
         <circle cx="500" cy="150" r="60" fill="#764ba2" opacity="0.05"/>
         <circle cx="80" cy="500" r="50" fill="#667eea" opacity="0.05"/>
         <circle cx="520" cy="480" r="45" fill="#764ba2" opacity="0.05"/>
 
-        <!-- Continentes -->
+        <!-- Continentes estilizados (mapa-múndi abstrato) -->
         <g opacity="0.15" fill="#667eea">
           <!-- América do Sul -->
           <path d="M 180 280 Q 190 250 200 270 L 210 300 Q 205 320 195 315 Q 185 310 180 280 Z"/>
@@ -111,7 +108,7 @@
           </g>
         </g>
 
-        <!-- Avião principal -->
+        <!-- Avião principal (mais bonito e detalhado) -->
         <g transform="translate(300, 300) rotate(-25)" filter="url(#shadow)">
           <!-- Sombra do avião -->
           <ellipse cx="0" cy="15" rx="35" ry="8" fill="#000000" opacity="0.1"/>
@@ -322,7 +319,7 @@
 
   .travel-illustration {
     width: 100%;
-    max-width: 500px;
+    max-width: 650px;
     height: auto;
     filter: drop-shadow(0 10px 30px rgba(102, 126, 234, 0.15));
   }
