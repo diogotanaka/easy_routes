@@ -8,8 +8,15 @@
 
   <div class="messages">
     <% @trip.messages.each do |msg| %>
-      <div class="<%= msg.role %>">
-        <strong><%= msg.role %>:</strong> <%= msg.content %>
+      <div class="<%= msg.role %>"
+        <% if msg.role == "user" %>
+          style="background: <%= user_avatar_color(current_user) %>">
+                <%= current_user.first_name[0].upcase %>
+          <strong><%= current_user.first_name %>:</strong> <%= msg.content %>
+        <% else %>
+          <%= image_tag "Desenho de um avatar.png", alt: "Easy Avatar", class: "avatar" %>
+          <strong><%= "Easy" %>:</strong> <%= msg.content %>
+        <% end %>
       </div>
     <% end %>
   </div>
