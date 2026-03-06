@@ -9,23 +9,31 @@
   <div class="messages">
     <% @trip.messages.each do |msg| %>
       <div class="<%= msg.role %>">
-        <strong>
+        <div class="msg-header">
           <% if msg.role == "user" %>
-            <%= current_user.first_name %>:
+            <% if current_user.photo.attached? %>
+              <div class="msg-avatar">
+                <%= image_tag current_user.photo, class: "avatar-img" %>
+              </div>
+            <% else %>
+              <div class="msg-avatar user-avatar-initials" style="background: <%= user_avatar_color(current_user) %>">
+                <%= current_user.first_name[0].upcase %>
+              </div>
+            <% end %>
+            <strong><%= current_user.first_name %></strong>
           <% else %>
-            Easy:
+            <div class="msg-avatar">
+              <%= image_tag "easy_avatar.png", class: "avatar-img" %>
+            </div>
+            <strong>Easy</strong>
           <% end %>
-        </strong>
-
-        <%= msg.content %>
+        </div>
+        <div class="msg-content">
+          <%= msg.content %>
+        </div>
       </div>
     <% end %>
   </div>
-
-  <!--<%= form_with url: trip_messages_path(@trip), method: :post do |f| %>
-    <%= f.text_area :content, placeholder: "Digite sua pergunta..." %>
-    <%= f.submit "Enviar" %>
-  <% end %> -->
 
   <div class="chat-form">
     <%= simple_form_for [@trip, @message] do |f| %>
@@ -104,13 +112,49 @@
   border-left: 4px solid #764ba2;
 }
 
-.messages strong {
+.msg-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.msg-header strong {
   color: #667eea;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  display: block;
-  margin-bottom: 4px;
+  margin: 0;
+}
+
+.msg-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.user-avatar-initials {
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.msg-content {
+  padding-left: 46px;
 }
 
 .chat-form {
@@ -175,19 +219,21 @@
 }
 
 @media (max-width:768px) {
+  .trip-chat-page {
+    padding: 10px;
+    margin: 20px auto;
+  }
 
-.trip-chat-page {
-  padding: 10px;
-  margin: 20px auto;
-}
+  .trip-header h1 {
+    font-size: 24px;
+  }
 
-.trip-header h1 {
-  font-size: 24px;
-}
+  .chat-form {
+    padding: 16px;
+  }
 
-.chat-form {
-  padding: 16px;
-}
-
+  .msg-content {
+    padding-left: 0;
+  }
 }
 </style>
