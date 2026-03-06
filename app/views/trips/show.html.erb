@@ -9,7 +9,14 @@
   <div class="messages">
     <% @trip.messages.each do |msg| %>
       <div class="<%= msg.role %>">
-        <strong><%= msg.role %>:</strong> <%= msg.content %>
+        <strong>
+          <% if msg.role == "user" %>
+            <%= current_user.name %>:
+          <% else %>
+            Easy:
+          <% end %>
+        </strong>
+        <%= msg.content %>
       </div>
     <% end %>
   </div>
