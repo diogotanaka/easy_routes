@@ -11,15 +11,9 @@
       <div class="<%= msg.role %>">
         <div class="msg-header">
           <% if msg.role == "user" %>
-            <% if current_user.photo.attached? %>
-              <div class="msg-avatar">
-                <%= image_tag current_user.photo, class: "avatar-img" %>
-              </div>
-            <% else %>
-              <div class="msg-avatar user-avatar-initials" style="background: <%= user_avatar_color(current_user) %>">
-                <%= current_user.first_name[0].upcase %>
-              </div>
-            <% end %>
+            <div class="msg-avatar user-avatar-initials" style="background: <%= user_avatar_color(current_user) %>">
+              <%= current_user.first_name[0].upcase %>
+            </div>
             <strong><%= current_user.first_name %></strong>
           <% else %>
             <div class="msg-avatar">
