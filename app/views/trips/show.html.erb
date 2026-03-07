@@ -17,7 +17,7 @@
             <strong><%= current_user.first_name %></strong>
           <% else %>
             <div class="msg-avatar">
-              <%= image_tag "easy_avatar.png", class: "avatar-img" %>
+              <%= image_tag "easy_avatar_menor.png", class: "avatar-img" %>
             </div>
             <strong>Easy</strong>
           <% end %>
@@ -134,10 +134,12 @@
 }
 
 .avatar-img {
-  width: 100%;
-  height: 100%;
+  width: 64px;
+  height: 64px;
   object-fit: cover;
   border-radius: 50%;
+  image-rendering: crisp-edges; /* força bordas mais nítidas */
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .user-avatar-initials {
