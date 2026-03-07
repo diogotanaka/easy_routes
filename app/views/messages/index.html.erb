@@ -1,10 +1,5 @@
 <h1>Chat da viagem</h1>
 
-<div>
-  <% @messages.each do |msg| %>
-    <p>
-      <strong><%= msg.user.first_name %>:</strong>
-      <%= msg.content %>
-    </p>
-  <% end %>
+<div id="messages" style="max-height: 400px; overflow-y: auto;">
+  <%= render @messages %>
 </div>

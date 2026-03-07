@@ -1,0 +1,21 @@
+<div class="message <%= message.role %>">
+
+  <div class="msg-header">
+    <% if message.role == "user" %>
+      <div class="msg-avatar user-avatar-initials" style="background: <%= user_avatar_color(message.trip.user) %>">
+        <%= message.trip.user.first_name[0].upcase %>
+      </div>
+      <strong><%= message.trip.user.first_name %></strong>
+    <% else %>
+      <div class="msg-avatar">
+        <%= image_tag "easy_avatar_menor.png", class: "avatar-img" %>
+      </div>
+      <strong>Easy</strong>
+    <% end %>
+  </div>
+
+  <div class="msg-content">
+    <%= render_markdown(message.content) %>
+  </div>
+
+</div>
