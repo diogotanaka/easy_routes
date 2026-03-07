@@ -1,0 +1,12 @@
+<div class="chat-form">
+  <%= simple_form_for [trip, message], html: { id: "new_message" } do |f| %>
+    <%= f.input :content,
+                label: "Faça sua pergunta aqui",
+                required: true,
+                placeholder: "Qual é sua pergunta?" %>
+
+    <%= f.button :submit,
+                 'Pergunte para a Easy',
+                 class: 'btn btn-primary' %>
+  <% end %>
+</div>

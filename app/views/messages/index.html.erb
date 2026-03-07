@@ -1,15 +1,5 @@
 <h1>Chat da viagem</h1>
 
-<div>
-  <% @messages.each do |msg| %>
-    <p>
-      <strong><%= msg.role %>:</strong>
-      <%= msg.content %>
-    </p>
-  <% end %>
+<div id="messages" style="max-height: 400px; overflow-y: auto;">
+  <%= render @messages %>
 </div>
-
-<%= simple_form_for [@trip, @message] do |f| %>
-  <%= f.input :content, label: false, placeholder: "Digite uma mensagem..." %>
-  <%= f.submit "Enviar" %>
-<% end %>
