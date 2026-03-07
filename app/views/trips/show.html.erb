@@ -6,7 +6,7 @@
 
   <h2>Chat</h2>
 
-  <div class="messages">
+  <div id="messages" class="messages">
     <% @trip.messages.each do |msg| %>
       <div class="<%= msg.role %>">
         <div class="msg-header">
@@ -29,17 +29,8 @@
     <% end %>
   </div>
 
-  <div class="chat-form">
-    <%= simple_form_for [@trip, @message] do |f| %>
-      <%= f.input :content,
-          label: "Faça sua pergunta aqui",
-          required: true,
-          placeholder: "Qual é sua pergunta?" %>
-
-      <%= f.button :submit,
-          'Pergunte para a Easy',
-          class: 'btn btn-primary' %>
-    <% end %>
+  <div id="new_message_container">
+    <%= render "messages/form", message: @message, trip: @trip %>
   </div>
 
   <%= link_to "Voltar", trips_path, class: "btn-voltar" %>
