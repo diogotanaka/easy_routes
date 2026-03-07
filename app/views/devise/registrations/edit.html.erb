@@ -1,39 +1,51 @@
 <div class="edit-profile-container">
   <div class="edit-profile-card">
-    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    <h2>Editar Cadastro</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.error_notification %>
 
       <div class="form-inputs">
-        <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :email, required: true, autofocus: true, label: "E-mail" %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Atualmente aguardando confirmação de: <%= resource.unconfirmed_email %></p>
         <% end %>
 
         <%= f.input :password,
-                    hint: "leave it blank if you don't want to change it",
+                    label: "Nova Senha",
+                    hint: "deixe em branco se não quiser alterar",
                     required: false,
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
+                    label: "Confirmar Nova Senha",
                     required: false,
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :current_password,
-                    hint: "we need your current password to confirm your changes",
+                    label: "Senha Atual",
+                    hint: "precisamos da sua senha atual para confirmar as mudanças",
                     required: true,
                     input_html: { autocomplete: "current-password" } %>
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Update" %>
+        <%= f.button :submit, "Atualizar Cadastro", class: "btn-update" %>
       </div>
     <% end %>
 
     <div class="account-actions">
-      <h3>Cancelar Minha Conta</h3>
-      <div>Não está gostando? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-      <%= link_to "Back", :back %>
+      <div class="danger-zone">
+        <h3>Zona de Perigo</h3>
+        <p class="danger-text">Excluir sua conta é uma ação permanente e não pode ser desfeita.</p>
+        <%= button_to "Excluir Minha Conta", registration_path(resource_name),
+            data: { confirm: "Tem certeza? Esta ação não pode ser desfeita!", turbo_confirm: "Tem certeza? Esta ação não pode ser desfeita!" },
+            method: :delete,
+            class: "btn-delete-account" %>
+      </div>
+
+      <div class="back-link">
+        <%= link_to "← Voltar", :back, class: "btn-back" %>
+      </div>
     </div>
   </div>
 </div>
@@ -56,7 +68,10 @@
     margin: 0 0 30px;
     font-size: 32px;
     font-weight: 700;
-    color: #1a202c;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     text-align: center;
   }
 
@@ -110,26 +125,22 @@
     margin-bottom: 24px;
   }
 
-  .edit-profile-card .form-actions input[type="submit"] {
+  .btn-update {
     width: 100%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    padding: 14px 24px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    border: none !important;
+    padding: 14px 24px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
   }
 
-  .edit-profile-card .form-actions input[type="submit"]:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-  }
-
-  .edit-profile-card .form-actions input[type="submit"]:active {
-    transform: translateY(0);
+  .btn-update:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4) !important;
   }
 
   .account-actions {
@@ -138,41 +149,60 @@
     border-top: 2px solid #e2e8f0;
   }
 
-  .account-actions h3 {
-    margin: 0 0 15px;
-    font-size: 20px;
+  .danger-zone {
+    background: #fff5f5;
+    border: 2px solid #feb2b2;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .danger-zone h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
     font-weight: 700;
     color: #c53030;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
-  .account-actions div {
-    margin-bottom: 20px;
-    color: #4a5568;
+  .danger-zone h3::before {
+    content: "";
+    font-size: 20px;
   }
 
-  .account-actions input[type="submit"] {
-    background: linear-gradient(135deg, #f56565 0%, #c53030 100%);
-    color: white;
-    border: none;
-    padding: 12px 24px;
+  .danger-text {
+    color: #742a2a;
     font-size: 14px;
-    font-weight: 600;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    margin-left: 8px;
+    margin-bottom: 16px;
+    line-height: 1.5;
   }
 
-  .account-actions input[type="submit"]:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(245, 101, 101, 0.4);
+  .btn-delete-account {
+    background: linear-gradient(135deg, #f56565 0%, #c53030 100%) !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    width: 100%;
   }
 
-  .account-actions input[type="submit"]:active {
-    transform: translateY(0);
+  .btn-delete-account:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 20px rgba(245, 101, 101, 0.4) !important;
   }
 
-  .account-actions a {
+  .back-link {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .btn-back {
     display: inline-block;
     color: #667eea;
     text-decoration: none;
@@ -183,8 +213,8 @@
     transition: all 0.2s ease;
   }
 
-  .account-actions a:hover {
-    background: #f7fafc;
+  .btn-back:hover {
+    background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
     color: #764ba2;
   }
 
@@ -210,6 +240,10 @@
 
     .edit-profile-card h2 {
       font-size: 24px;
+    }
+
+    .danger-zone {
+      padding: 16px;
     }
   }
 </style>
